@@ -10,8 +10,10 @@
 set history=1024
 
 " Enable filetype plugins
+filetype on
 filetype plugin on
 filetype indent on
+set tags=tags
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -81,6 +83,9 @@ colorscheme monokai
 " set background=dark
 set t_Co=256
 
+" Highlight current line 
+set cursorline
+
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -105,7 +110,7 @@ set noswapfile
 "" Text and tab related
 
 " Use spaces instead of tabs
-set expandtab
+" set expandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -147,6 +152,12 @@ let g:user_emmet_mode='a'
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<C-Z>'
 autocmd FileType html,css EmmetInstall
+
+" taglist
+let Tlist_Compact_Format = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
+nnoremap <C-l> :TlistToggle<CR>
 
 "" UDF
 
@@ -213,5 +224,5 @@ function! AirlineInit()
     let g:airline_section_c = airline#section#create(['filetype'])
     let g:airline_section_x = airline#section#create(['%P'])
     let g:airline_section_y = airline#section#create(['%B'])
-    let g:airline_section_z = airline#section#create_right(['%l','%c'])
+    let g:airline_section_z = airline#section#create_right(['Line: %l','Column: %c'])
 endfunction
