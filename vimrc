@@ -133,12 +133,18 @@ set wrap "Wrap lines
 set laststatus=2
 
 " Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+" buffer switch
+" move among buffers with CTRL
+map <C-J> :bnext
+map <C-K> :bprev
 
 "" Plugins
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
 autocmd VimEnter * call AirlineInit()
 
@@ -158,6 +164,11 @@ let Tlist_Compact_Format = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
 nnoremap <C-l> :TlistToggle<CR>
+
+"" Language supports
+
+" rustlang
+let g:rustfmt_autosave = 1
 
 "" UDF
 
